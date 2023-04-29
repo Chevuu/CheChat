@@ -19,12 +19,10 @@ const MessageBox = ({ messages }) => {
         if (message.senderPort === window.location.port) {
           cssClass += " my";
           messagePort = "You";
-        } else if (message.receiverPort === window.location.port) {
+        } else {
           cssClass += " notMy";
           messagePort = `Port ${message.senderPort}`;
-        } else {
-          return null;
-        }
+        } 
         return (
           <div key={index} className={cssClass}>
             <div className="chat-message-time">{message.time}</div>

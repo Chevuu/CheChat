@@ -9,6 +9,10 @@ const Chat = () => {
 
   useEffect(() => {
     ws.current = new WebSocket(`ws://localhost:8080/`);
+    ws.current.onopen = (event) => {
+      console.log('WebSocket opened');
+      ws.current.send(`::${window.location.port}`);
+    };
     ws.current.onerror = (event) => {
       console.error('WebSocket error:', event);
     };
@@ -64,6 +68,7 @@ const Chat = () => {
           name="recipient-port"
           placeholder="Port"
           autoComplete="off"
+          value={recipientPort}
           onChange={handleRecipientPortChange}
         />
         <button className="chat-submit" type="submit">
