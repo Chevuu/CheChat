@@ -1,4 +1,4 @@
-# Chat App
+# CheChat
 
 This is a chat app I built for practice and is free to use.
 
