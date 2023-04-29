@@ -1,4 +1,4 @@
-# Chat App
+# CheChat
 
 This is a chat app I built for practice and is free to use.
 
@@ -19,3 +19,7 @@ The app should now be running on `http://localhost:3000` and `http://localhost:3
 ## Usage
 
 Once the app is running, you can open two different browser windows and navigate to the two different ports to simulate two users. You can then send messages back and forth between the two windows. Time will be displayed and you can nicely see which message is sent by who.
+
+## Progress
+
+![Alt text](ProgressImage2.png)
