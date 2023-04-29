@@ -20,6 +20,6 @@ The app should now be running on `http://localhost:3000` and `http://localhost:3
 
 Once the app is running, you can open two different browser windows and navigate to the two different ports to simulate two users. You can then send messages back and forth between the two windows. Time will be displayed and you can nicely see which message is sent by who.
 
-##Progress
+## Progress
 
-![Alt text](progressImage.png)
+![Alt text](ProgressImage.png)
