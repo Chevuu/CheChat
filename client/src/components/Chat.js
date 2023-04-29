@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import MessageBox from "./MessageBox";
+import ChatHeader from "./ChatHeader";
+import ChatInput from "./ChatInput";
 import "./styles/Chat.css";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const ws = useRef(null);
-  const [recipientPort, setRecipientPort] = useState(null);
 
   useEffect(() => {
     ws.current = new WebSocket(`ws://localhost:8080/`);
@@ -35,46 +36,14 @@ const Chat = () => {
     };
   }, []);
 
-  const handleMessageSubmit = (event) => {
-    event.preventDefault();
-    const message = event.target.message.value;
-    if (message === "") {
-      return;
-    }
+  const handleMessageSubmit = (message, recipientPort) => {
     ws.current.send(`${message}:${recipientPort}:${window.location.port}`);
-    event.target.reset();
   };
-
-  const handleRecipientPortChange = (event) => {
-    setRecipientPort(event.target.value);
-  }
 
   return (
     <div className="chat-container">
-      <div className="chat-header">
-        <h1 className="chat-title">CheChat</h1>
-      </div>
-      <form onSubmit={handleMessageSubmit}>
-        <input
-          className="chat-input"
-          type="text"
-          name="message"
-          placeholder="Type a message..."
-          autoComplete="off"
-        />
-        <input
-          className="chat-recipient-port"
-          type="text"
-          name="recipient-port"
-          placeholder="Port"
-          autoComplete="off"
-          value={recipientPort}
-          onChange={handleRecipientPortChange}
-        />
-        <button className="chat-submit" type="submit">
-          Send
-        </button>
-      </form>
+      <ChatHeader />
+      <ChatInput onMessageSubmit={handleMessageSubmit} />
       <MessageBox messages={messages} />
     </div>
   );
