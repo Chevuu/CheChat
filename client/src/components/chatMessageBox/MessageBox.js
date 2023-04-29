@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import "./styles/Chat.css";
+import "./MessageBox.css";
 
 const MessageBox = ({ messages }) => {
   const chatContainerRef = useRef(null);

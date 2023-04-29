@@ -1,25 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import MessageBox from "./MessageBox";
-import ChatHeader from "./ChatHeader";
-import ChatInput from "./ChatInput";
-import "./styles/Chat.css";
+import MessageBox from "./chatMessageBox/MessageBox";
+import ChatHeader from "./chatHeader/ChatHeader";
+import ChatInput from "./chatInput/ChatInput";
+import "./Chat.css";
 
-const Chat = () => {
+const Chat = ({ port }) => {
   const [messages, setMessages] = useState([]);
   const ws = useRef(null);
 
   useEffect(() => {
     ws.current = new WebSocket(`ws://localhost:8080/`);
+
+    // this is done so that backend can be aware of open clients
     ws.current.onopen = (event) => {
-      console.log('WebSocket opened');
       ws.current.send(`::${window.location.port}`);
     };
-    ws.current.onerror = (event) => {
-      console.error('WebSocket error:', event);
-    };
+
     ws.current.onmessage = (event) => {
       const message = event.data;
-      console.log("Received message" + message)
       const messageTime = new Date().toLocaleTimeString([], { hour12: false, hourCycle: 'h23', hour: '2-digit', minute: '2-digit' });
       const newMessage = {
         message: message.split(':')[0],
@@ -36,8 +34,8 @@ const Chat = () => {
     };
   }, []);
 
-  const handleMessageSubmit = (message, recipientPort) => {
-    ws.current.send(`${message}:${recipientPort}:${window.location.port}`);
+  const handleMessageSubmit = (message) => {
+    ws.current.send(`${message}:${port}:${window.location.port}`);
   };
 
   return (

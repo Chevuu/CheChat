@@ -1,0 +1,11 @@
+.chat-header {
+    margin-top: -5%;
+    padding: 30px;
+  }
+  
+  .chat-title {
+    margin: 0;
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+  }

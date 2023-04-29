@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+import "./ChatInput.css";
 
 const ChatInput = ({ onMessageSubmit }) => {
   const [message, setMessage] = useState("");
-  const [recipientPort, setRecipientPort] = useState("");
 
   const handleMessageSubmit = (event) => {
     event.preventDefault();
-    if (message === "" || recipientPort === "") {
+    if (message === "") {
       return;
     }
-    onMessageSubmit(message, recipientPort);
+    onMessageSubmit(message);
     setMessage("");
   };
 
@@ -23,15 +23,6 @@ const ChatInput = ({ onMessageSubmit }) => {
         autoComplete="off"
         value={message}
         onChange={(event) => setMessage(event.target.value)}
-      />
-      <input
-        className="chat-recipient-port"
-        type="text"
-        name="recipient-port"
-        placeholder="Port"
-        autoComplete="off"
-        value={recipientPort}
-        onChange={(event) => setRecipientPort(event.target.value)}
       />
       <button className="chat-submit" type="submit">
         Send
