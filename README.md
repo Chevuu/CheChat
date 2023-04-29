@@ -22,4 +22,4 @@ Once the app is running, you can open two different browser windows and navigate
 
 ## Progress
 
-![Alt text](ProgressImage2.png)
+![Alt text](ProgressImage.png)
