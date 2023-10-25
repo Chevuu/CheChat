@@ -1,6 +1,6 @@
 # CheChat
 
-This is a chat app I built for practice and is free to use.
+This is a chat app I built as a personal project and is free to use. Goal was to learn some basics about the Golang language.
 
 The backend of the app was made using GoLang and the frontend was built with ReactJS.
 
